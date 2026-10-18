@@ -1,0 +1,5 @@
+Eigen 3.4.0 headers vendored for MVKit's private numerical backend.
+Source provenance for this build environment: CasADi's bundled Eigen 3.4.0 header tree.
+Eigen is a header-only C++ template library. No Eigen types are exposed by MVKit public headers or ABI.
+Upstream: https://eigen.tuxfamily.org/
+License: MPL-2.0 (individual files may carry their own compatible notices).

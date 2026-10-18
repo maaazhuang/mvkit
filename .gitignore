@@ -1,0 +1,11 @@
+/build/
+/out/
+/.vs/
+__pycache__/
+*.py[cod]
+/3rdparty/jpeg/
+/3rdparty/png/
+/3rdparty/tiff/
+/3rdparty/zlib/
+/3rdparty/downloads/
+CMakeUserPresets.json

@@ -1,0 +1,10 @@
+MVKit
+Copyright 2026 MVKit contributors
+
+MVKit's original code is licensed under the Apache License, Version 2.0.
+Third-party components retain their own copyrights and licenses; see
+the third-party components and licenses section in README.md and the notices
+distributed with those components.
+
+When built with libjpeg-turbo:
+This software is based in part on the work of the Independent JPEG Group.

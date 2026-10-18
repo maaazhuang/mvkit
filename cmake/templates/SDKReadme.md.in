@@ -1,0 +1,44 @@
+# mvkit SDK @PROJECT_VERSION@
+
+本目录提供已安装的 C11 / C++14 SDK。库名为 `mvkit` 和 `mvkitcpp`，CMake 导入目标为 `mvkit::C`、`mvkit::CXX`。
+
+## 安装布局
+
+- [C 公开头](@MVKIT_SDK_INCLUDE_RELATIVE@/mvkit/c/mvkit.h)、[C++ 公开头](@MVKIT_SDK_INCLUDE_RELATIVE@/mvkit/cpp/mvkit.hpp)。
+- Windows 共享库及收集到的非系统运行依赖位于安装前缀的 `bin/`。
+- CMake 配置包位于安装前缀的 `lib/cmake/MVKit/`（以本次安装目录配置为准）。
+- 本目录包含 [LICENSE](LICENSE)、[NOTICE](NOTICE)、功能文档和第三方许可材料。
+
+## C++ 应用
+
+```cmake
+cmake_minimum_required(VERSION 3.20)
+project(my_vision_app LANGUAGES CXX)
+find_package(MVKit @PROJECT_VERSION@ EXACT CONFIG REQUIRED)
+add_executable(my_vision_app main.cpp)
+target_link_libraries(my_vision_app PRIVATE mvkit::CXX)
+```
+
+配置应用时，用 `-DCMAKE_PREFIX_PATH=/absolute/path/to/sdk` 指定 SDK 安装前缀。C 应用链接 `mvkit::C`。MSVC 调用方会自动继承 UTF-8 源码编码选项。
+
+```cpp
+#include <mvkit/cpp/mvkit.hpp>
+#include <iostream>
+
+int main() {
+  const auto version = mv::MvSystem::GetSystem("version");
+  std::cout << version.S().Text() << '\n';
+}
+```
+
+Windows 应用运行时应能找到 SDK `bin/` 中的 DLL，并安装匹配的 Microsoft C++ 运行库。Linux 的两个共享库通过同目录查找路径互相定位。
+
+## 使用文档
+
+- [C++ 接口与生命周期](docs/api.md)
+- [功能说明](docs/features.md)
+- [内存、并行与 CPU 派发](docs/runtime.md)
+
+完整图片 demo、原始图片和项目中英文介绍位于源码发行包中。当前处于开发阶段，不保证 API/ABI 兼容，建议固定版本并重新编译应用。
+
+@MVKIT_SDK_THIRD_PARTY_NOTICES@

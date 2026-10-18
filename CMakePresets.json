@@ -1,0 +1,65 @@
+{
+  "version": 2,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "common",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "MVKIT_BUILD_EXAMPLES": "ON"
+      }
+    },
+    {
+      "name": "windows",
+      "displayName": "Windows / VS2026 / x64",
+      "inherits": "common",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64"
+    },
+    {
+      "name": "windows-2022",
+      "inherits": "windows",
+      "generator": "Visual Studio 17 2022"
+    },
+    {
+      "name": "windows-2019",
+      "inherits": "windows",
+      "generator": "Visual Studio 16 2019"
+    },
+    {
+      "name": "linux",
+      "displayName": "Linux / Ninja / Release",
+      "inherits": "common",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows",
+      "configurePreset": "windows",
+      "configuration": "Release"
+    },
+    {
+      "name": "windows-2022",
+      "configurePreset": "windows-2022",
+      "configuration": "Release"
+    },
+    {
+      "name": "windows-2019",
+      "configurePreset": "windows-2019",
+      "configuration": "Release"
+    },
+    {
+      "name": "linux",
+      "configurePreset": "linux"
+    }
+  ]
+}

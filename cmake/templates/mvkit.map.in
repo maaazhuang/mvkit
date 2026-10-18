@@ -1,0 +1,6 @@
+MVKIT_@PROJECT_VERSION@ {
+  global:
+    mv_*;
+  local:
+    *;
+};

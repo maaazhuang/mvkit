@@ -1,0 +1,7 @@
+# 先由 configure_file 替换构建工具路径，再由 file(GENERATE) 选择配置对应的库。
+set(MVKIT_RUNTIME_BINARIES "$<TARGET_FILE:mvkit>;$<TARGET_FILE:mvkitcpp>")
+set(MVKIT_RUNTIME_DIRS "$<TARGET_FILE_DIR:JPEG::JPEG>;$<TARGET_FILE_DIR:PNG::PNG>;$<TARGET_FILE_DIR:@mvkit_tiff_runtime_target@>")
+set(MVKIT_RUNTIME_DESTINATION "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/@CMAKE_INSTALL_BINDIR@")
+set(CMAKE_GET_RUNTIME_DEPENDENCIES_COMMAND "@mvkit_runtime_dependency_command@")
+set(CMAKE_GET_RUNTIME_DEPENDENCIES_TOOL "@mvkit_runtime_dependency_tool@")
+include("@CMAKE_CURRENT_SOURCE_DIR@/cmake/CopyRuntime.cmake")
